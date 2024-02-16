@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/basic.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Board Register</title>
+</head>
+
+<div layout:fragment="content">
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Board register
+                </div>
+                <div class="card-body">
+                    <form action="/board/register" method="post">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Title</span>
+                            <input type="text" name="title" class="form-control" placeholder="Title">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Content</span>
+                            <textarea class="form-control col-sm-5" rows="5" name="content"></textarea>
+                        </div>
+
+                        <div class="my-4">
+                            <div class="float-end">
+                                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>   <!--card body end-->
+
+            </div>  <!--card end-->
+        </div>   <!--col end-->
+    </div>   <!--row end-->
+
+</div>  <!--layout fragment end-->
+
+
+<script layout:fragment="script" th:inline="javascript">
+
+    // form 태그 submit 동작 처리
+    document.querySelector(".submitBtn").addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        document.querySelector("form").submit();
+    }, false)
+
+</script>
